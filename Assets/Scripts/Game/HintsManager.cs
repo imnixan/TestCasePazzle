@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class HintsManager : MonoBehaviour
 {
+    private GameSceneManager gameSceneManager;
+
     private void Start()
     {
+        gameSceneManager = FindAnyObjectByType<GameSceneManager>();
         GameObject hint = InitHint(0);
         for (int i = 1; i < transform.childCount; i++)
         {
@@ -26,11 +29,12 @@ public class HintsManager : MonoBehaviour
 
         if (currentId >= transform.childCount)
         {
-            Debug.Log("EndGame");
+            gameSceneManager.EndGame();
         }
         else
         {
             transform.GetChild(currentId).gameObject.SetActive(true);
+            transform.GetChild(currentId).GetComponent<Hint>().Show();
         }
     }
 }

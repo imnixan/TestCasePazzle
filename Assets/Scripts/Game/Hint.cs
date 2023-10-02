@@ -61,7 +61,7 @@ public class Hint : MonoBehaviour
         boxCollider.enabled = false;
     }
 
-    private void OnEnable()
+    public void Show()
     {
         image.DOColor(new Color(1, 1, 1, 1), StaticData.AnimationSpeed);
     }

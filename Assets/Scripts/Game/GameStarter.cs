@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class GameStarter : MonoBehaviour
 {
-    [SerializeField]
     private LevelData levelData;
 
     [SerializeField]
@@ -17,16 +16,21 @@ public class GameStarter : MonoBehaviour
     [SerializeField]
     private Image bg;
 
+    [SerializeField]
+    private Timer timer;
+
     private List<Piece> pieces = new List<Piece>();
 
     void Start()
     {
+        levelData = StaticData.LevelData;
         bg.sprite = levelData.BackgroundImage;
 
         Instantiate(levelData.HintManager, canvas).anchoredPosition = Vector2.zero;
 
         FillPieces();
         FillContent();
+        timer.StartTimer();
     }
 
     private void FillPieces()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2312f4fc397dd0245bc9622b87ef0a64, type: 3}
   m_Name: Level0
   m_EditorClassIdentifier: 
+  Preview: {fileID: 21300000, guid: 235e0d0ec61736e439b5af71f74b7556, type: 3}
   BackgroundImage: {fileID: 21300000, guid: 235e0d0ec61736e439b5af71f74b7556, type: 3}
   HintManager: {fileID: 6029667157692263300, guid: f3b98ca8bf328414c8f4eeaa53a57179, type: 3}
   CorrectPieces:
@@ -21,4 +22,7 @@ MonoBehaviour:
   - {fileID: 750482645, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
   - {fileID: 1177978633, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
   - {fileID: -115059882, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
-  IncorrentPieces: []
+  IncorrentPieces:
+  - {fileID: -1368576751, guid: 061ceadeb61c6ee489af450ac68e59f3, type: 3}
+  - {fileID: 414012004, guid: 061ceadeb61c6ee489af450ac68e59f3, type: 3}
+  - {fileID: -710963645, guid: 061ceadeb61c6ee489af450ac68e59f3, type: 3}
