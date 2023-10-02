@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Level0
   m_EditorClassIdentifier: 
   BackgroundImage: {fileID: 21300000, guid: 235e0d0ec61736e439b5af71f74b7556, type: 3}
-  HintManager: {fileID: 0}
+  HintManager: {fileID: 6029667157692263300, guid: f3b98ca8bf328414c8f4eeaa53a57179, type: 3}
   CorrectPieces:
   - {fileID: 1495311884, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
   - {fileID: 802228187, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
   - {fileID: -1022788979, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
-  - {fileID: 1177978633, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
   - {fileID: 750482645, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
+  - {fileID: 1177978633, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
   - {fileID: -115059882, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
   IncorrentPieces: []

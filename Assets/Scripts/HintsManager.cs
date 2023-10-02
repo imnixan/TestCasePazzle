@@ -20,16 +20,17 @@ public class HintsManager : MonoBehaviour
         return hint;
     }
 
-    public void ShowNextHint(int prevId)
+    public void ShowNextHint(int currentId)
     {
-        transform.GetChild(prevId).gameObject.SetActive(false);
-        if (prevId >= transform.childCount)
+        currentId++;
+
+        if (currentId >= transform.childCount)
         {
             Debug.Log("EndGame");
         }
         else
         {
-            transform.GetChild(prevId++).gameObject.SetActive(true);
+            transform.GetChild(currentId).gameObject.SetActive(true);
         }
     }
 }

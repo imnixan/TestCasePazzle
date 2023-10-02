@@ -5,10 +5,10 @@ using UnityEngine.EventSystems;
 
 public class Piece : MonoBehaviour
 {
+    public bool connected;
     public int id;
     private Image image;
     private RectTransform rt;
-    private bool connected;
     private BoxCollider2D boxCollider;
     private Hint hint;
 
@@ -18,6 +18,7 @@ public class Piece : MonoBehaviour
         image = GetComponent<Image>();
         image.sprite = sprite;
         rt = GetComponent<RectTransform>();
+
         boxCollider = gameObject.AddComponent<BoxCollider2D>();
         boxCollider.isTrigger = true;
         boxCollider.size = new Vector2(image.mainTexture.width, image.mainTexture.height);
@@ -57,11 +58,14 @@ public class Piece : MonoBehaviour
         {
             transform.SetParent(hint.transform);
             hint.FinishConnect();
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.anchorMin = rt.anchorMax;
             rt.anchoredPosition = Vector2.zero;
         }
         else
         {
             transform.SetParent(slideBar);
         }
+        rt.localScale = new Vector2(1, 1);
     }
 }
