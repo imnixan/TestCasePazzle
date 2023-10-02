@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Hint : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Hint : MonoBehaviour
     private Piece piece;
 
     private BoxCollider2D boxCollider;
+    private Image image;
 
     public void Init(int id, HintsManager hintsManager)
     {
@@ -25,6 +27,8 @@ public class Hint : MonoBehaviour
 
         Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
         rb.isKinematic = true;
+
+        image = GetComponent<Image>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,7 +57,12 @@ public class Hint : MonoBehaviour
     public void FinishConnect()
     {
         hintsManager.ShowNextHint(id);
-        GetComponent<Image>().enabled = false;
+        image.DOColor(new Color(1, 1, 1, 0), StaticData.AnimationSpeed);
         boxCollider.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        image.DOColor(new Color(1, 1, 1, 1), StaticData.AnimationSpeed);
     }
 }

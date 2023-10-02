@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class Piece : MonoBehaviour
 {
@@ -17,8 +18,8 @@ public class Piece : MonoBehaviour
         this.id = id;
         image = GetComponent<Image>();
         image.sprite = sprite;
+        image.SetNativeSize();
         rt = GetComponent<RectTransform>();
-
         boxCollider = gameObject.AddComponent<BoxCollider2D>();
         boxCollider.isTrigger = true;
         boxCollider.size = new Vector2(image.mainTexture.width, image.mainTexture.height);
@@ -30,7 +31,7 @@ public class Piece : MonoBehaviour
         connected = false;
         image.SetNativeSize();
         transform.SetParent(canvasTransform);
-        //boxCollider.size = rt.sizeDelta / 2;
+        image.DOColor(new Color(1, 1, 1, 0.7f), StaticData.AnimationSpeed);
         boxCollider.enabled = true;
     }
 
@@ -38,12 +39,14 @@ public class Piece : MonoBehaviour
     {
         connected = true;
         this.hint = hint;
+        image.DOColor(new Color(1, 1, 1, 1), StaticData.AnimationSpeed);
     }
 
     public void SetDisconnected()
     {
         connected = false;
         hint = null;
+        image.DOColor(new Color(1, 1, 1, 0.5f), StaticData.AnimationSpeed);
     }
 
     public void MoveTo(Vector2 pos)
@@ -60,11 +63,12 @@ public class Piece : MonoBehaviour
             hint.FinishConnect();
             rt.anchorMax = new Vector2(0.5f, 0.5f);
             rt.anchorMin = rt.anchorMax;
-            rt.anchoredPosition = Vector2.zero;
+            rt.DOAnchorPos(Vector2.zero, StaticData.AnimationSpeed);
         }
         else
         {
             transform.SetParent(slideBar);
+            image.DOColor(new Color(1, 1, 1, 1), StaticData.AnimationSpeed);
         }
         rt.localScale = new Vector2(1, 1);
     }
