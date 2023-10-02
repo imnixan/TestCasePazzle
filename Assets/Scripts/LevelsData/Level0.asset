@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2312f4fc397dd0245bc9622b87ef0a64, type: 3}
+  m_Name: Level0
+  m_EditorClassIdentifier: 
+  BackgroundImage: {fileID: 21300000, guid: 235e0d0ec61736e439b5af71f74b7556, type: 3}
+  HintManager: {fileID: 0}
+  CorrectPieces:
+  - {fileID: 1495311884, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
+  - {fileID: 802228187, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
+  - {fileID: -1022788979, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
+  - {fileID: 1177978633, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
+  - {fileID: 750482645, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
+  - {fileID: -115059882, guid: 1e0ac11ff09582546a4e5b6d1b5b2315, type: 3}
+  IncorrentPieces: []

@@ -1,54 +1,67 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Piece : MonoBehaviour
 {
-    private bool dragged;
-    private Vector2 startPos;
-    private RectTransform rt;
-    private Transform t;
+    public int id;
     private Image image;
-    private Vector2 mousePos;
-    private Camera camera;
-    private float minYPos;
+    private RectTransform rt;
+    private bool connected;
+    private BoxCollider2D boxCollider;
+    private Hint hint;
 
-    private void Start()
+    public void Init(int id, Sprite sprite)
     {
+        this.id = id;
         image = GetComponent<Image>();
+        image.sprite = sprite;
         rt = GetComponent<RectTransform>();
-        camera = Camera.main;
-        t = transform;
-        minYPos = t.position.y + 2;
+        boxCollider = gameObject.AddComponent<BoxCollider2D>();
+        boxCollider.isTrigger = true;
+        boxCollider.size = new Vector2(image.mainTexture.width, image.mainTexture.height);
+        boxCollider.enabled = false;
     }
 
-    private void OnMouseDown()
+    public void SetGrabed(Transform canvasTransform)
     {
-        startPos = rt.anchoredPosition;
-        dragged = true;
-        image.color = Color.red;
+        connected = false;
+        image.SetNativeSize();
+        transform.SetParent(canvasTransform);
+        //boxCollider.size = rt.sizeDelta / 2;
+        boxCollider.enabled = true;
     }
 
-    private void OnMouseUp()
+    public void SetConnected(Hint hint)
     {
-        image.color = Color.white;
-        dragged = false;
-        rt.anchoredPosition = startPos;
+        connected = true;
+        this.hint = hint;
     }
 
-    private void Update()
+    public void SetDisconnected()
     {
-        if (dragged)
+        connected = false;
+        hint = null;
+    }
+
+    public void MoveTo(Vector2 pos)
+    {
+        rt.anchoredPosition += pos;
+    }
+
+    public void SetDropped(Transform slideBar)
+    {
+        boxCollider.enabled = false;
+        if (connected)
         {
-            mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-            if (mousePos.y >= minYPos)
-            {
-                t.position = mousePos;
-            }
-            else
-            {
-                rt.anchoredPosition = startPos;
-            }
+            transform.SetParent(hint.transform);
+            hint.FinishConnect();
+            rt.anchoredPosition = Vector2.zero;
+        }
+        else
+        {
+            transform.SetParent(slideBar);
         }
     }
 }
