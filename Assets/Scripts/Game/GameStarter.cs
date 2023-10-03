@@ -19,6 +19,9 @@ public class GameStarter : MonoBehaviour
     [SerializeField]
     private Timer timer;
 
+    [SerializeField]
+    private SlideBar slideBar;
+
     private List<Piece> pieces = new List<Piece>();
 
     void Start()
@@ -27,7 +30,7 @@ public class GameStarter : MonoBehaviour
         bg.sprite = levelData.BackgroundImage;
 
         Instantiate(levelData.HintManager, canvas).anchoredPosition = Vector2.zero;
-
+        slideBar.Init(levelData.CorrectPieces.Length);
         FillPieces();
         FillContent();
         timer.StartTimer();

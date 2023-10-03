@@ -22,7 +22,6 @@ public class Piece : MonoBehaviour
         image.sprite = sprite;
         image.SetNativeSize();
         rt = GetComponent<RectTransform>();
-
         nativeSize = rt.sizeDelta;
         boxCollider = gameObject.AddComponent<BoxCollider2D>();
         boxCollider.isTrigger = true;
@@ -64,7 +63,7 @@ public class Piece : MonoBehaviour
         rt.anchoredPosition += pos;
     }
 
-    public void SetDropped(Transform slideBar)
+    public void SetDropped(Transform contentBox)
     {
         boxCollider.enabled = false;
         if (connected)
@@ -74,10 +73,11 @@ public class Piece : MonoBehaviour
             rt.anchorMax = new Vector2(0.5f, 0.5f);
             rt.anchorMin = rt.anchorMax;
             rt.DOAnchorPos(Vector2.zero, StaticData.AnimationLength);
+            contentBox.GetComponentInParent<SlideBar>().FinishPiece();
         }
         else
         {
-            transform.SetParent(slideBar);
+            transform.SetParent(contentBox);
             image.DOColor(new Color(1, 1, 1, 1), StaticData.AnimationLength);
             rt.DOSizeDelta(sizeInScroll, StaticData.AnimationLength);
         }
