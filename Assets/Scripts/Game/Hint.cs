@@ -57,12 +57,12 @@ public class Hint : MonoBehaviour
     public void FinishConnect()
     {
         hintsManager.ShowNextHint(id);
-        image.DOColor(new Color(1, 1, 1, 0), StaticData.AnimationSpeed);
+        image.DOColor(new Color(1, 1, 1, 0), StaticData.AnimationLength);
         boxCollider.enabled = false;
     }
 
     public void Show()
     {
-        image.DOColor(new Color(1, 1, 1, 1), StaticData.AnimationSpeed);
+        image.DOColor(new Color(1, 1, 1, 1), StaticData.AnimationLength);
     }
 }

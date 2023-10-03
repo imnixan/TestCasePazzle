@@ -29,11 +29,11 @@ public class GameSceneManager : MonoBehaviour
     {
         timer.Stop();
         int time = timer.GetTime();
-        if (time < PlayerPrefs.GetInt(StaticData.RecordPrefs, int.MaxValue))
+        if (time < PlayerPrefs.GetInt(StaticData.RecordPrefs + StaticData.LevelNum, int.MaxValue))
         {
-            PlayerPrefs.SetInt(StaticData.RecordPrefs, time);
+            PlayerPrefs.SetInt(StaticData.RecordPrefs + StaticData.LevelNum, time);
             PlayerPrefs.Save();
         }
-        endGameTable.DOAnchorPos(Vector2.zero, StaticData.AnimationSpeed).PlayForward();
+        endGameTable.DOAnchorPos(Vector2.zero, StaticData.AnimationLength).PlayForward();
     }
 }

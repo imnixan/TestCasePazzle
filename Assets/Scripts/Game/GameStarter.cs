@@ -36,17 +36,18 @@ public class GameStarter : MonoBehaviour
     private void FillPieces()
     {
         int correctPieces = 0;
+        float contentBoxHeight = contentBox.rect.height;
         for (int i = 0; i < levelData.CorrectPieces.Length; i++)
         {
             Piece piece = Instantiate(piecePrefab);
-            piece.Init(i, levelData.CorrectPieces[i]);
+            piece.Init(i, levelData.CorrectPieces[i], contentBoxHeight);
             pieces.Add(piece);
             correctPieces++;
         }
         for (int i = 0; i < levelData.IncorrentPieces.Length; i++)
         {
             Piece piece = Instantiate(piecePrefab);
-            piece.Init(i + correctPieces, levelData.IncorrentPieces[i]);
+            piece.Init(i + correctPieces, levelData.IncorrentPieces[i], contentBoxHeight);
             pieces.Add(piece);
         }
     }

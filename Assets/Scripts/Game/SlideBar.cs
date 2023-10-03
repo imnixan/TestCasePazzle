@@ -59,7 +59,7 @@ public class SlideBar
         newMousePos = eventData.position;
         float xMove = Mathf.Abs(newMousePos.x - mousePos.x);
         float yMove = Mathf.Abs(newMousePos.y - mousePos.y);
-        if (yMove > xMove)
+        if (yMove > xMove || yMove > 3)
         {
             dragPiece = true;
             piece.SetGrabed(canvasTransform);
