@@ -25,7 +25,7 @@ public class GameSceneManager : MonoBehaviour
         }
     }
 
-    public void EndGame()
+    private void OnHintsEnd()
     {
         timer.Stop();
         int time = timer.GetTime();
@@ -35,5 +35,15 @@ public class GameSceneManager : MonoBehaviour
             PlayerPrefs.Save();
         }
         endGameTable.DOAnchorPos(Vector2.zero, StaticData.AnimationLength).PlayForward();
+    }
+
+    private void OnEnable()
+    {
+        HintsManager.HintsEnd += OnHintsEnd;
+    }
+
+    private void OnDisable()
+    {
+        HintsManager.HintsEnd -= OnHintsEnd;
     }
 }

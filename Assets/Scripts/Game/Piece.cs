@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class Piece : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Piece : MonoBehaviour
     private Hint hint;
     private Vector2 sizeInScroll,
         nativeSize;
+
+    public static event UnityAction PieceOnPlace;
 
     public void Init(int id, Sprite sprite, float contentBoxHeight)
     {
@@ -73,7 +76,7 @@ public class Piece : MonoBehaviour
             rt.anchorMax = new Vector2(0.5f, 0.5f);
             rt.anchorMin = rt.anchorMax;
             rt.DOAnchorPos(Vector2.zero, StaticData.AnimationLength);
-            contentBox.GetComponentInParent<SlideBar>().FinishPiece();
+            PieceOnPlace?.Invoke();
         }
         else
         {

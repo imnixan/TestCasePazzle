@@ -11,8 +11,6 @@ public class SlideBar
         IPointerUpHandler,
         IBeginDragHandler
 {
-    private TextMeshProUGUI piecesCountText;
-
     public Vector2 mousePos;
     public Vector2 newMousePos;
     public bool dragPiece;
@@ -21,18 +19,13 @@ public class SlideBar
     private Transform canvasTransform;
     private Transform contentBox;
     private ScrollRect scrollRect;
-    private int finishedPieces;
-    private int totalPieces;
 
-    public void Init(int totalCorrectPieces)
+    private void Start()
     {
-        piecesCountText = GetComponentInChildren<TextMeshProUGUI>();
         canvas = GetComponentInParent<Canvas>();
         canvasTransform = canvas.transform;
         contentBox = GetComponentInChildren<ContentSizeFitter>().transform;
         scrollRect = GetComponent<ScrollRect>();
-        totalPieces = totalCorrectPieces;
-        UpdatePiecesCount();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -79,16 +72,5 @@ public class SlideBar
         dragPiece = false;
         piece.SetDropped(contentBox);
         scrollRect.enabled = true;
-    }
-
-    private void UpdatePiecesCount()
-    {
-        piecesCountText.text = $"{finishedPieces} / {totalPieces}";
-    }
-
-    public void FinishPiece()
-    {
-        finishedPieces++;
-        UpdatePiecesCount();
     }
 }

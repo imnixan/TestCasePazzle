@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HintsManager : MonoBehaviour
 {
     private GameSceneManager gameSceneManager;
 
+    public static event UnityAction HintsEnd;
+
     private void Start()
     {
-        gameSceneManager = FindAnyObjectByType<GameSceneManager>();
         GameObject hint = InitHint(0);
         for (int i = 1; i < transform.childCount; i++)
         {
@@ -29,7 +31,7 @@ public class HintsManager : MonoBehaviour
 
         if (currentId >= transform.childCount)
         {
-            gameSceneManager.EndGame();
+            HintsEnd?.Invoke();
         }
         else
         {
